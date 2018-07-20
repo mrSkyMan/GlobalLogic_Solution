@@ -36,7 +36,7 @@ namespace GlobalLogic_Solution
                     var f = new FileInfoSerializable(file);
                     Files.Add(f);
                 }
-                catch(Exception ex) { MessageBox.Show(ex.Message); }
+                catch(Exception ex) { }
             } 
             
             
@@ -49,36 +49,6 @@ namespace GlobalLogic_Solution
                 }
             }
             catch { }
-        }
-
-        void WalkDirectoryTree(System.IO.DirectoryInfo root)
-        {
-            FileInfo[] files = null;
-            DirectoryInfo[] subDirs = null;
-
-
-            try
-            {
-                files = root.GetFiles("*.*");
-            }
-
-            catch { }
-
-            if (files != null)
-            {
-                foreach (FileInfo fi in files)
-                {
-                    Files.Add(new FileInfoSerializable(fi));
-                }
-
-                // Now find all the subdirectories under this directory.
-                subDirs = root.GetDirectories();
-
-                foreach (DirectoryInfo dirInfo in subDirs)
-                {
-                    WalkDirectoryTree(dirInfo);
-                }
-            }
         }
     }
 }
